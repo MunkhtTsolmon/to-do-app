@@ -4,32 +4,28 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>To Do List</title>
+    <link rel="stylesheet" href="todo.css" />
   </head>
   <body>
-    <button onclick="addTask()">Enter new task</button>
-    <div id="tasks"></div>
-    <script href="todo.js">
-      const tasks = [
-        // { name: "Shalaa ugaah", status: "todo" },
-        // { name: "huvtsas ugaah", status: "todo" },
-        // { name: "duugee harah", status: "todo" },
-      ];
-      function render() {
-        const output = document.getElementById("tasks");
-        output.innerHTML = "";
-        for (let i = 0; i < tasks.length; i++) {
-          output.innerHTML +=
-            "<div>" + tasks[i].name + " " + tasks[i].status + "</div>";
-        }
-      }
+    <button onclick="popup()">Add task</button>
+    <div id="taskPopup" class="addTaskPopup">
+      <h1>Enter task</h1>
+      <span onclick="closePopup()">&times;</span>
+      <input id="taskName" type="text" placeholder="Task name..." />
+      <label for="status">Select status</label>
+      <select name="status" id="statusSelect">
+        <option value="to-do">to-do</option>
+        <option value="in-progress">in progress</option>
+        <option value="done">done</option>
+      </select>
+      <button onclick="addTask()">SUBMIT</button>
+    </div>
+    <div class="taskContainerHead">
+      <div class="taskName"><h1>Task name</h1></div>
+      <div class="status"><h1>Status</h1></div>
+    </div>
+    <div id="taskContainerMain" class="taskContainerMain"></div>
 
-      function addTask() {
-        const name = prompt();
-        tasks.push({ name: name, status: "todo" });
-        render();
-      }
-      render();
-      function editStatus() {}
-    </script>
+    <script src="todo.js"></script>
   </body>
 </html>

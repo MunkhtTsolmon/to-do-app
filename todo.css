@@ -1,0 +1,6 @@
+.addTaskPopup {
+  display: none;
+}
+.taskContainerHead {
+  display: flex;
+}
