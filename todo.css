@@ -1,6 +1,104 @@
+* {
+  margin: 0;
+}
+html {
+  font-size: 10px;
+}
+body {
+  background: linear-gradient(90deg, #56d8e4 10%, #9f01ea 90%);
+}
+.taskContainerMain {
+  width: fit-content;
+  display: flex;
+  margin: auto;
+  position: relative;
+}
 .addTaskPopup {
   display: none;
+  width: 50rem;
+  height: 50rem;
+  background-color: aqua;
+  padding: 2rem;
+  text-align: center;
+  position: absolute;
+  left: 70rem;
+  margin-top: 25rem;
+  border-radius: 10px;
+}
+.addTaskPopup > h1 {
+  font-size: 4rem;
+}
+#taskName {
+  margin: 2rem auto;
+  width: 40rem;
+  height: 6rem;
+  border: none;
+  border-radius: 5px;
+}
+select {
+  width: 40rem;
+  height: 6rem;
+  border: none;
+  border-radius: 5px;
+}
+.addTaskPopup > div > label {
+  font-size: 3rem;
+}
+.exitBtn {
+  display: block;
+  width: 6rem;
+  height: 6rem;
+  font-size: 6rem;
+  margin-top: -6rem;
+}
+.submitBtn {
+  position: relative;
+  margin-top: 16rem;
+  border: none;
+  width: 10rem;
+  height: 4rem;
+  background: linear-gradient(90deg, #56d8e4 10%, #9f01ea 90%);
 }
 .taskContainerHead {
   display: flex;
+}
+.taskContainer {
+  display: flex;
+}
+
+section {
+  background-color: white;
+  width: 44rem;
+  height: 100rem;
+  margin-top: 5px;
+  margin-left: 4rem;
+  border-radius: 10px;
+}
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  margin: 2rem auto;
+}
+.sectionHeader h1 {
+  font-size: 4rem;
+  margin: auto;
+}
+.editTaskPopup {
+  display: none;
+}
+.addTaskBtn {
+  width: 20rem;
+  height: 8rem;
+  /* background-color: #64fdeb; */
+  border: none;
+  border-radius: 5px;
+  color: #9f01ea;
+  margin: 5rem auto 5rem auto;
+  font-size: 4rem;
+  font-weight: 700;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* opacity: 0.8; */
+  box-shadow: 4px 4px 50px -4px #64fdeb;
 }

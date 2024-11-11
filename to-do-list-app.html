@@ -7,25 +7,43 @@
     <link rel="stylesheet" href="todo.css" />
   </head>
   <body>
-    <button onclick="popup()">Add task</button>
-    <div id="taskPopup" class="addTaskPopup">
-      <h1>Enter task</h1>
-      <span onclick="closePopup()">&times;</span>
-      <input id="taskName" type="text" placeholder="Task name..." />
+    <button class="addTaskBtn" onclick="popup()">Add task</button>
+
+    <div id="taskContainerMain" class="taskContainerMain">
+      <div id="taskPopup" class="addTaskPopup">
+        <h1>Enter task</h1>
+        <span class="exitBtn" onclick="closePopup()">&times;</span>
+        <div>
+          <input id="taskName" type="text" placeholder="Task name..." />
+        </div>
+        <div>
+          <label for="status">Select status</label>
+          <select name="status" id="statusSelect">
+            <option value="to-do">to-do</option>
+            <option value="in-progress">in-progress</option>
+            <option value="done">done</option>
+            <option value="blocked">blocked</option>
+          </select>
+        </div>
+        <button class="submitBtn" onclick="addTask(), closePopup()">
+          SUBMIT
+        </button>
+      </div>
+    </div>
+
+    <div id="editTaskPopup" class="editTaskPopup">
+      <h1>Edit task</h1>
+      <span onclick="">&times;</span>
+      <input id="taskNameEdit" type="text" placeholder="new name" />
       <label for="status">Select status</label>
       <select name="status" id="statusSelect">
         <option value="to-do">to-do</option>
-        <option value="in-progress">in progress</option>
+        <option value="in-progress">in-progress</option>
         <option value="done">done</option>
+        <option value="blocked">blocked</option>
       </select>
-      <button onclick="addTask()">SUBMIT</button>
+      <button onclick="">SAVE</button>
     </div>
-    <div class="taskContainerHead">
-      <div class="taskName"><h1>Task name</h1></div>
-      <div class="status"><h1>Status</h1></div>
-    </div>
-    <div id="taskContainerMain" class="taskContainerMain"></div>
-
     <script src="todo.js"></script>
   </body>
 </html>
