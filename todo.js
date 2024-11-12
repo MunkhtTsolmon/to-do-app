@@ -34,38 +34,51 @@ function popup() {
 function closePopup() {
   taskPopup.style.display = "none";
 }
+
 function addTask() {
   let taskDiv = document.createElement("div");
+
   if (taskName.value === "") {
     alert("You must write your task");
-  } else {
-    let h3Name = document.createElement("h3");
-    h3Name.innerHTML = taskName.value;
-    let h3Status = document.createElement("h3");
-    h3Status.innerHTML = statusSelect.value;
-    let editButton = document.createElement("button");
-    editButton.innerText = "edit";
-    editButton.setAttribute("onclick", "editTask()");
-    let remove = document.createElement("button");
-    remove.innerText = "remove";
-
-    taskDiv.appendChild(h3Name);
-    taskDiv.appendChild(editButton);
-    taskDiv.appendChild(remove);
-    
-    remove.setAttribute("onclick", "deleteTask()");
+    return;
   }
-  if (statusSelect.value == "to-do") {
+
+  let h3Name = document.createElement("h3");
+  h3Name.innerHTML = taskName.value;
+  
+  let h3Status = document.createElement("h3");
+  h3Status.innerHTML = statusSelect.value;
+
+  let editButton = document.createElement("button");
+  editButton.innerText = "Edit";
+  editButton.setAttribute("onclick", "editTask(this)");
+
+  let removeButton = document.createElement("button");
+  removeButton.innerText = "Remove";
+  removeButton.setAttribute("onclick", "deleteTask(this)");
+
+  taskDiv.appendChild(h3Name);
+  taskDiv.appendChild(editButton);
+  taskDiv.appendChild(removeButton);
+
+  if (statusSelect.value === "to-do") {
     section1.appendChild(taskDiv);
-  } else if (statusSelect.value == "in-progress") {
+  } else if (statusSelect.value === "in-progress") {
     section2.appendChild(taskDiv);
-  } else if (statusSelect.value == "done") {
+  } else if (statusSelect.value === "done") {
     section3.appendChild(taskDiv);
-  } else if (statusSelect.value == "blocked") {
+  } else if (statusSelect.value === "blocked") {
     section4.appendChild(taskDiv);
   }
 }
-function editTask() {
-  editTaskPopup.style.display = "block";
+function deleteTask(button) {
+  button.parentElement.remove();
 }
-function deleteTask() {}
+
+function editTask(button) {
+  let taskDiv = button.parentElement;
+  let taskName = prompt("Edit task name:", taskDiv.children[0].innerText);
+  if (taskName) {
+    taskDiv.children[0].innerText = taskName;
+  }
+}
