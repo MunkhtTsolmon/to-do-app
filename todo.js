@@ -23,10 +23,32 @@ sectionHeader1.setAttribute("class", "sectionHeader");
 sectionHeader2.setAttribute("class", "sectionHeader");
 sectionHeader3.setAttribute("class", "sectionHeader");
 sectionHeader4.setAttribute("class", "sectionHeader");
-sectionHeader1.innerHTML = "<h1> To do</h1>";
-sectionHeader2.innerHTML = "<h1> In progress</h1>";
-sectionHeader3.innerHTML = "<h1> Done</h1>";
-sectionHeader4.innerHTML = "<h1> Blocked</h1>";
+// const statusBar1 = document.createElement("span");
+// const statusBar2 = document.createElement("span");
+// const statusBar3 = document.createElement("span");
+// const statusBar4 = document.createElement("span");
+// statusBar1.setAttribute("class", "statusBar1");
+// statusBar2.setAttribute("class", "statusBar2");
+// statusBar3.setAttribute("class", "statusBar3");
+// statusBar4.setAttribute("class", "statusBar4");
+// sectionHeader1.appendChild(statusBar1);
+// sectionHeader2.appendChild(statusBar2);
+// sectionHeader3.appendChild(statusBar3);
+// sectionHeader4.appendChild(statusBar4);
+sectionHeader1.innerHTML = "<div class='statusBar1'></div>" + "<h1> To do</h1>";
+sectionHeader2.innerHTML =
+  "<div class='statusBar2'></div>" + "<h1> In progress</h1>";
+sectionHeader3.innerHTML = "<div class='statusBar3'></div>" + "<h1> Done</h1>";
+sectionHeader4.innerHTML =
+  "<div class='statusBar4'></div>" + "<h1> Blocked</h1>";
+let taskCounter1 = 0;
+let taskCounter2 = 0;
+let taskCounter3 = 0;
+let taskCounter4 = 0;
+let counterPrint1 = document.createElement("h3");
+let counterPrint2 = document.createElement("h3");
+let counterPrint3 = document.createElement("h3");
+let counterPrint4 = document.createElement("h3");
 
 function popup() {
   taskPopup.style.display = "block";
@@ -37,6 +59,7 @@ function closePopup() {
 
 function addTask() {
   let taskDiv = document.createElement("div");
+  taskDiv.setAttribute("class", "addedTasks");
 
   if (taskName.value === "") {
     alert("You must write your task");
@@ -45,32 +68,43 @@ function addTask() {
 
   let h3Name = document.createElement("h3");
   h3Name.innerHTML = taskName.value;
-  
-  let h3Status = document.createElement("h3");
-  h3Status.innerHTML = statusSelect.value;
 
-  let editButton = document.createElement("button");
-  editButton.innerText = "Edit";
+  let editButton = document.createElement("i");
+  editButton.setAttribute("class", "fa fa-edit");
+  editButton.setAttribute("id", "editButton");
   editButton.setAttribute("onclick", "editTask(this)");
 
-  let removeButton = document.createElement("button");
-  removeButton.innerText = "Remove";
+  let removeButton = document.createElement("i");
+  removeButton.setAttribute("class", "fa fa-trash");
+  removeButton.setAttribute("id", "removeButton");
   removeButton.setAttribute("onclick", "deleteTask(this)");
 
   taskDiv.appendChild(h3Name);
   taskDiv.appendChild(editButton);
   taskDiv.appendChild(removeButton);
-
   if (statusSelect.value === "to-do") {
     section1.appendChild(taskDiv);
+    taskCounter1++;
+    counterPrint1.innerText = taskCounter1;
   } else if (statusSelect.value === "in-progress") {
     section2.appendChild(taskDiv);
+    taskCounter2++;
+    counterPrint2.innerText = taskCounter2;
   } else if (statusSelect.value === "done") {
     section3.appendChild(taskDiv);
+    taskCounter3++;
+    counterPrint3.innerText = taskCounter3;
   } else if (statusSelect.value === "blocked") {
     section4.appendChild(taskDiv);
+    taskCounter4++;
+    counterPrint4.innerText = taskCounter4;
   }
+  sectionHeader1.appendChild(counterPrint1);
+  sectionHeader2.appendChild(counterPrint2);
+  sectionHeader3.appendChild(counterPrint3);
+  sectionHeader4.appendChild(counterPrint4);
 }
+
 function deleteTask(button) {
   button.parentElement.remove();
 }
