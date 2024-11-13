@@ -106,12 +106,12 @@ function addTask() {
 }
 
 function deleteTask(button) {
-  let parentSection =  button.parentElement.parentElement;
+  let parentSection = button.parentElement.parentElement;
   button.parentElement.remove();
 
-  if(parentSection === section1) {
+  if (parentSection === section1) {
     taskCounter1--;
-    counterPrint1.innerHTML = taskCounter1
+    counterPrint1.innerHTML = taskCounter1;
   } else if (parentSection === section2) {
     taskCounter2--;
     counterPrint2.innerHTML = taskCounter2;
@@ -132,3 +132,73 @@ function deleteTask(button) {
 //   }
 // }
 
+let currentEditingTask;
+function editTask(button) {
+  currentEditingTask = button.parentElement;
+  const taskName = currentEditingTask.children[0].innerText;
+
+  document.getElementById("editTaskName").value = taskName;
+
+  const currentSection = currentEditingTask.parentElement;
+  let currentStatus = "";
+  if (currentSection === section1) currentStatus = "to-do";
+  else if (currentSection === section2) currentStatus = "in-progress";
+  else if (currentSection === section3) currentStatus = "done";
+  else if (currentSection === section4) currentStatus = "blocked";
+
+  document.getElementById("editStatusSelect").value = currentStatus;
+
+  document.getElementById("editTaskPopup").style.display = "block";
+}
+
+function closeEditPopup() {
+  document.getElementById("editTaskPopup").style.display = "none";
+}
+
+function saveEditedTask() {
+  const newTaskName = document.getElementById("editTaskName").value;
+  const newStatus = document.getElementById("editStatusSelect").value;
+
+  currentEditingTask.children[0].innerText = newTaskName;
+
+  let targetSection;
+  if (newStatus === "to-do") {
+    targetSection = section1;
+    taskCounter1++;
+    counterPrint1.innerText = taskCounter1;
+  } else if (newStatus === "in-progress") {
+    targetSection = section2;
+    taskCounter2++;
+    counterPrint2.innerText = taskCounter2;
+  } else if (newStatus === "done") {
+    targetSection = section3;
+    taskCounter3++;
+    counterPrint3.innerText = taskCounter3;
+  } else if (newStatus === "blocked") {
+    targetSection = section4;
+    taskCounter4++;
+    counterPrint4.innerText = taskCounter4;
+  }
+
+  const currentSection = currentEditingTask.parentElement;
+  if (currentSection !== targetSection) {
+    currentSection.removeChild(currentEditingTask);
+    if (currentSection === section1) {
+      taskCounter1--;
+      counterPrint1.innerText = taskCounter1;
+    } else if (currentSection === section2) {
+      taskCounter2--;
+      counterPrint2.innerText = taskCounter2;
+    } else if (currentSection === section3) {
+      taskCounter3--;
+      counterPrint3.innerText = taskCounter3;
+    } else if (currentSection === section4) {
+      taskCounter4--;
+      counterPrint4.innerText = taskCounter4;
+    }
+
+    targetSection.appendChild(currentEditingTask);
+  }
+
+  closeEditPopup();
+}

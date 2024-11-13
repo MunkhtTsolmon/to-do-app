@@ -11,8 +11,7 @@
     />
   </head>
   <body>
-        <button class="addTaskBtn" onclick="popup()">Add task</button>
-  
+    <button class="addTaskBtn" onclick="popup()">Add task</button>
 
     <div id="taskContainerMain" class="taskContainerMain">
       <div id="taskPopup" class="addTaskPopup">
@@ -34,25 +33,27 @@
           SUBMIT
         </button>
       </div>
+      <div class="addTaskPopup" id="editTaskPopup" style="display: none">
+        <h1>Edit Task</h1>
+        <div>
+          <input type="text" id="editTaskName" />
+        </div>
+        <div>
+          <label for="editStatusSelect">Select status:</label>
+          <select id="editStatusSelect">
+            <option value="to-do">To Do</option>
+            <option value="in-progress">In Progress</option>
+            <option value="done">Done</option>
+            <option value="blocked">Blocked</option>
+          </select>
+        </div>
+        <div class="editCloseSection">
+          <button onclick="saveEditedTask()">Save Changes</button>
+          <button onclick="closeEditPopup()">Cancel</button>
+        </div>
+      </div>
     </div>
 
-    <div id="editTaskPopup" style="display: none;">
-      <h2>Edit Task</h2>
-      <label for="editTaskName">Task Name:</label>
-      <input type="text" id="editTaskName" />
-      
-      <label for="editStatusSelect">Status:</label>
-      <select id="editStatusSelect">
-        <option value="to-do">To Do</option>
-        <option value="in-progress">In Progress</option>
-        <option value="done">Done</option>
-        <option value="blocked">Blocked</option>
-      </select>
-      
-      <button onclick="saveEditedTask()">Save Changes</button>
-      <button onclick="closeEditPopup()">Cancel</button>
-    </div>
-    
     <script src="todo.js"></script>
   </body>
 </html>
