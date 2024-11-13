@@ -106,13 +106,29 @@ function addTask() {
 }
 
 function deleteTask(button) {
+  let parentSection =  button.parentElement.parentElement;
   button.parentElement.remove();
-}
 
-function editTask(button) {
-  let taskDiv = button.parentElement;
-  let taskName = prompt("Edit task name:", taskDiv.children[0].innerText);
-  if (taskName) {
-    taskDiv.children[0].innerText = taskName;
+  if(parentSection === section1) {
+    taskCounter1--;
+    counterPrint1.innerHTML = taskCounter1
+  } else if (parentSection === section2) {
+    taskCounter2--;
+    counterPrint2.innerHTML = taskCounter2;
+  } else if (parentSection === section3) {
+    taskCounter3--;
+    counterPrint3.innerHTML = taskCounter3;
+  } else if (parentSection === section4) {
+    taskCounter4--;
+    counterPrint4.innerHTML = taskCounter4;
   }
 }
+
+// function editTask(button) {
+//   let taskDiv = button.parentElement;
+//   let taskName = prompt("Edit task name:", taskDiv.children[0].innerText);
+//   if (taskName) {
+//     taskDiv.children[0].innerText = taskName;
+//   }
+// }
+

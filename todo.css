@@ -27,6 +27,7 @@ html {
 body {
   background: linear-gradient(90deg, #56d8e4 10%, #9f01ea 90%);
   background-repeat: no-repeat;
+  background-size: cover;
 }
 .taskContainerMain {
   width: fit-content;
@@ -175,7 +176,7 @@ section {
   width: 20rem;
 }
 .addTaskBtn:active {
-  transform: translateY(22rem);
+  transform: translateY(5rem);
 }
 ::placeholder {
   font-size: 2rem;

@@ -11,7 +11,8 @@
     />
   </head>
   <body>
-    <button class="addTaskBtn" onclick="popup()">Add task</button>
+        <button class="addTaskBtn" onclick="popup()">Add task</button>
+  
 
     <div id="taskContainerMain" class="taskContainerMain">
       <div id="taskPopup" class="addTaskPopup">
@@ -35,19 +36,23 @@
       </div>
     </div>
 
-    <div id="editTaskPopup" class="editTaskPopup">
-      <h1>Edit task</h1>
-      <span onclick="">&times;</span>
-      <input id="taskNameEdit" type="text" placeholder="new name" />
-      <label for="status">Select status</label>
-      <select name="status" id="statusSelect">
-        <option value="to-do">to-do</option>
-        <option value="in-progress">in-progress</option>
-        <option value="done">done</option>
-        <option value="blocked">blocked</option>
+    <div id="editTaskPopup" style="display: none;">
+      <h2>Edit Task</h2>
+      <label for="editTaskName">Task Name:</label>
+      <input type="text" id="editTaskName" />
+      
+      <label for="editStatusSelect">Status:</label>
+      <select id="editStatusSelect">
+        <option value="to-do">To Do</option>
+        <option value="in-progress">In Progress</option>
+        <option value="done">Done</option>
+        <option value="blocked">Blocked</option>
       </select>
-      <button onclick="">SAVE</button>
+      
+      <button onclick="saveEditedTask()">Save Changes</button>
+      <button onclick="closeEditPopup()">Cancel</button>
     </div>
+    
     <script src="todo.js"></script>
   </body>
 </html>
