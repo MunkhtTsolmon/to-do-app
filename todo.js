@@ -161,10 +161,10 @@ function saveEditedTask() {
   const currentStatus = document.getElementById("statusSelect").value;
   currentEditingTask.children[0].innerText = newTaskName;
 
-  if(newStatus === currentStatus) {
-  closeEditPopup();
-  return;
-}
+  if (newStatus === currentStatus) {
+    closeEditPopup();
+    return;
+  }
 
   let targetSection;
   if (newStatus === "to-do") {
@@ -203,21 +203,18 @@ function saveEditedTask() {
     }
 
     targetSection.appendChild(currentEditingTask);
-  } 
+  }
 
   closeEditPopup();
 }
 function filterTasksByStatus() {
-  // Get the selected status from the dropdown
   const selectedStatus = document.getElementById("statusFilter").value;
 
-  // Remove the 'active-section' class from all sections
   section1.classList.remove("active-section");
   section2.classList.remove("active-section");
   section3.classList.remove("active-section");
   section4.classList.remove("active-section");
 
-  // Add the 'active-section' class to the selected section
   if (selectedStatus === "to-do") {
     section1.classList.add("active-section");
   } else if (selectedStatus === "in-progress") {
@@ -229,11 +226,8 @@ function filterTasksByStatus() {
   }
 }
 
-// Initial display setup for mobile view
 function initializeMobileView() {
-  // Display only the "To Do" section initially in mobile view
   section1.classList.add("active-section");
 }
 
-// Call initializeMobileView when the page loads
 window.onload = initializeMobileView;

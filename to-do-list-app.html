@@ -12,7 +12,15 @@
   </head>
   <body>
     <button class="addTaskBtn" onclick="popup()">Add task</button>
-
+    <div id="taskFilter" style="display: none">
+      <div><label for="statusFilter">Filter by Status:</label></div>
+      <select id="statusFilter" onchange="filterTasksByStatus()">
+        <option value="to-do">To Do</option>
+        <option value="in-progress">In Progress</option>
+        <option value="done">Done</option>
+        <option value="blocked">Blocked</option>
+      </select>
+    </div>
     <div id="taskContainerMain" class="taskContainerMain">
       <div id="taskPopup" class="addTaskPopup">
         <h1>Enter task</h1>
@@ -53,16 +61,6 @@
         </div>
       </div>
     </div>
-<!-- Task Filter Dropdown -->
-<div id="taskFilter" style="display: none;">
-  <label for="statusFilter">Filter by Status:</label>
-  <select id="statusFilter" onchange="filterTasksByStatus()">
-    <option value="to-do">To Do</option>
-    <option value="in-progress">In Progress</option>
-    <option value="done">Done</option>
-    <option value="blocked">Blocked</option>
-  </select>
-</div>
 
     <script src="todo.js"></script>
   </body>
