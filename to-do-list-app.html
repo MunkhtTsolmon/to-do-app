@@ -23,10 +23,10 @@
         <div>
           <label for="status">Select status</label>
           <select name="status" id="statusSelect">
-            <option value="to-do">to-do</option>
-            <option value="in-progress">in-progress</option>
-            <option value="done">done</option>
-            <option value="blocked">blocked</option>
+            <option value="to-do">To Do</option>
+            <option value="in-progress">In Progress</option>
+            <option value="done">Done</option>
+            <option value="blocked">Blocked</option>
           </select>
         </div>
         <button class="submitBtn" onclick="addTask(), closePopup()">
@@ -53,6 +53,16 @@
         </div>
       </div>
     </div>
+<!-- Task Filter Dropdown -->
+<div id="taskFilter" style="display: none;">
+  <label for="statusFilter">Filter by Status:</label>
+  <select id="statusFilter" onchange="filterTasksByStatus()">
+    <option value="to-do">To Do</option>
+    <option value="in-progress">In Progress</option>
+    <option value="done">Done</option>
+    <option value="blocked">Blocked</option>
+  </select>
+</div>
 
     <script src="todo.js"></script>
   </body>
